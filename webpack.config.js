@@ -6,7 +6,8 @@ module.exports = {
     entry: './app/src/js/app.js',//Entry point of this application
     output: {
         filename: 'bundle.js',//Here you can put any name you want
-        path: outputPath//This is the location where the bundle is gonna be stored
+        path: outputPath,//This is the location where the bundle is gonna be stored
+        clean: true
     },
     plugins: [
         new HtmlWebpackPlugin({
