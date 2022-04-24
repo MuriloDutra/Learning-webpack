@@ -1,6 +1,7 @@
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'app/dist')//It gets the path since your system root until your current directory
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: './app/src/js/app.js',//Entry point of this application
@@ -14,6 +15,11 @@ module.exports = {
             template: './app/src/app.html',
             filename: 'app.html',
             hash: true
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: './app/src/css', to: 'css'}
+            ]          
         }),
     ]
 };
