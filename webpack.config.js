@@ -3,6 +3,7 @@ const outputPath = path.resolve(__dirname, 'app/dist')//It gets the path since y
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
     entry: './app/src/js/app.js',//Entry point of this application
@@ -31,6 +32,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'styles.css',
-        })
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
 };
