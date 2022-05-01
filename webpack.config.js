@@ -1,5 +1,6 @@
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'app/dist')//It gets the path since your system root until your current directory
+const contentBase = path.resolve(__dirname, 'dist')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
@@ -26,13 +27,17 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './app/src/app.html',
-            filename: 'app.html',
+            template: './app/src/index.html',
+            filename: 'index.html',
             hash: true
         }),
         new MiniCssExtractPlugin({
             filename: 'styles.css',
         }),
         new webpack.optimize.ModuleConcatenationPlugin()
-    ]
+    ],
+    devServer: {
+        static: contentBase,
+        port: 3000,
+    }
 };
