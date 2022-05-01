@@ -2,6 +2,7 @@ const path = require('path')
 const outputPath = path.resolve(__dirname, 'app/dist')//It gets the path since your system root until your current directory
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
     entry: './app/src/js/app.js',//Entry point of this application
@@ -13,6 +14,12 @@ module.exports = {
     module: {
         rules: [
             {test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader']}
+        ]
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerWebpackPlugin(),
         ]
     },
     plugins: [
