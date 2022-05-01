@@ -20,6 +20,7 @@ module.exports = {
         minimize: true,
         minimizer: [
             new CssMinimizerWebpackPlugin(),
+            '...'//It tells webpack to use his defaults minimizers AND the ones you passed above
         ]
     },
     plugins: [
